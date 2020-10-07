@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>JS + CSS Clock</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://kit.fontawesome.com/efd71d3ed7.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -16,16 +17,53 @@
     </div>
 
     <div class="dateDisplay"></div>
-      <audio controls hidden autoplay loop>
+
+
+
+      <!-- <audio controls hidden autoplay loop>
       <source src="ticking.ogg" type="audio/ogg">
-    </audio>
-   
+    </audio> -->
+
+
+    <!-- Audio  -->
+
+   <audio src="ticking.ogg"></audio>
+<button id="button">
+<i class="fas fa-volume-mute"></i>
+</button>
+ 
  
      
   
   <script>
     /* getting all hands */
    
+// Audio
+const button = document.querySelector("#button");
+const icon = document.querySelector("#button > i");
+const audio = document.querySelector("audio");
+
+button.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.volume = 0.2;
+    audio.play();
+      icon.classList.remove('fa-volume-mute');
+    icon.classList.add('fa-volume-up');
+   
+  
+    
+  } else {
+    audio.pause();
+    icon.classList.remove('fa-volume-up');
+    icon.classList.add('fa-volume-mute'); 
+     
+  }
+  button.classList.add("fade");
+});
+
+
+
+
     const secondHand = document.querySelector(".second-hand");
     const minuteHand = document.querySelector(".min-hand");
     const hourHand = document.querySelector(".hour-hand");
@@ -36,6 +74,9 @@
      
     /* setting date and time */
     function setSec() {
+
+
+
       
     var secondsDegrees = 90;
       
@@ -83,7 +124,7 @@ hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
 
 
-      document.getElementById("my-audio").play();
+      // document.getElementById("my-audio").play();
   </script>
   
   </body>
